@@ -1,8 +1,13 @@
 <template>
   <v-app>
     <v-app-bar app dark>
-      <div class="d-flex align-center">
-        <v-icon x-large v-on:click="scrollToTop()">mdi-paw</v-icon>
+      <div
+        title="scroll to top"
+        v-on:click="scrollToTop()"
+        style="cursor: pointer"
+        class="d-flex align-center"
+      >
+        <v-icon x-large>mdi-paw</v-icon>
         &nbsp;reddit/aww client
       </div>
     </v-app-bar>

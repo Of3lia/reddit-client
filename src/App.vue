@@ -2,14 +2,8 @@
   <v-app>
     <v-app-bar app dark>
       <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
+        <v-icon x-large v-on:click="scrollToTop()">mdi-paw</v-icon>
+        &nbsp;reddit/aww client
       </div>
     </v-app-bar>
 
@@ -22,7 +16,11 @@
 <script>
 export default {
   name: "App",
-
+  methods: {
+    scrollToTop() {
+      window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    },
+  },
   data: () => ({
     //
   }),

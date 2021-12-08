@@ -2,7 +2,15 @@
   <v-card>
     <v-row>
       <v-col>
-        <v-card-title>{{ post.title }}</v-card-title>
+        <v-card-title>
+          <a
+            style="color: inherit; text-decoration: inherit"
+            :href="post.url_overridden_by_dest"
+          >
+            {{ post.title }}
+            <v-icon style="color: rgb(50, 50, 250)">mdi-open-in-new</v-icon>
+          </a>
+        </v-card-title>
       </v-col>
     </v-row>
     <v-row>

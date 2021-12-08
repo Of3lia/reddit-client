@@ -1,5 +1,7 @@
 <template>
-  <div>{{ posts }}</div>
+  <v-container>
+    <v-row class="text-center"> {{ posts }} </v-row>
+  </v-container>
 </template>
 
 <script>

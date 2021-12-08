@@ -1,14 +1,13 @@
 <template>
-  <div>
-    <RedditListContainer />
-  </div>
+  <RedditListContainer />
 </template>
 
 <script>
-import RedditListContainer from "@/components/RedditListContainer.vue";
+import RedditListContainer from "../components/RedditListContainer";
 
 export default {
   name: "Home",
+
   components: {
     RedditListContainer,
   },

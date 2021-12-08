@@ -9,19 +9,23 @@ export default new Vuex.Store({
     posts: [],
     limit: 25,
     after: '',
+    isLoadingPosts: false,
   },
   mutations: {
     SET_POSTS(state, posts) {
-      state.posts = { ...posts, ...state.posts };
+      posts.forEach(post => {
+        state.posts.push(post)
+      });
+      console.log(posts);
       state.after = posts[posts?.length - 1]?.data?.name;
-      // console.log(posts[posts.length - 1].data.name);
+      this.state.isLoadingPosts = false;
     }
   },
   actions: {
     loadPosts({ commit }) {
+      this.state.isLoadingPosts = true;
       axios
-        .get(`https://www.reddit.com/r/aww/.json?
-        after=${this.state.after}&limit=${this.state.limit}`)
+        .get(`https://www.reddit.com/r/aww/.json?after=${this.state.after}&limit=${this.state.limit}`)
         // .get('https://www.reddit.com/r/aww/.json?limit=25')
         .then(r => r.data.data.children)
         .then(posts => {

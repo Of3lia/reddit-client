@@ -1,5 +1,5 @@
 <template>
-  <v-container ref="scrollArea">
+  <v-container>
     <v-row>
       <v-col
         cols="12"
@@ -13,16 +13,17 @@
         <RedditListItem :post="post.data" :index="i" />
       </v-col>
 
+      <span ref="loadMorePosts"></span>
       <v-col
         cols="12"
         sm="6"
         lg="4"
         xl="3"
         class="mb-3 mt-3"
-        v-for="skeleton in 25"
+        v-for="skeleton in 4"
         :key="skeleton"
       >
-        <v-skeleton-loader class="mx-auto" type="card"></v-skeleton-loader>
+        <v-skeleton-loader type="card"> </v-skeleton-loader>
       </v-col>
     </v-row>
   </v-container>
@@ -45,12 +46,13 @@ export default {
   },
   mounted() {
     this.initIntersectionObserver();
+    this.observe();
   },
-  computed: mapState(["posts"]),
+  computed: mapState(["posts", "isLoadingPosts"]),
   methods: {
     initIntersectionObserver() {
       let options = {
-        root: this.$refs.scrollArea,
+        root: null,
         rootMargin: "0px",
         threshold: 1.0,
       };
@@ -58,11 +60,14 @@ export default {
       this.observer = new IntersectionObserver(this.callback, options);
     },
     callback() {
-      console.log("asdasd");
+      console.log("observeEED");
+      if (!this.isLoadingPosts) {
+        this.$store.dispatch("loadPosts");
+      }
     },
     observe() {
-      console.log("qweqweqwewqe");
-      this.observer.observe(this.$refs.target);
+      this.observer.observe(this.$refs.loadMorePosts);
+      console.log("observing");
     },
   },
 };

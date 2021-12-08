@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-row>
-      <v-col class="col-4" v-for="post in posts" :key="post.name">
+      <v-col class="col-4 mb-3 mt-3" v-for="post in posts" :key="post.name">
         <RedditListItem :post="post.data" />
       </v-col>
     </v-row>

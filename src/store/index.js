@@ -16,7 +16,6 @@ export default new Vuex.Store({
       posts.forEach(post => {
         state.posts.push(post)
       });
-      console.log(posts);
       state.after = posts[posts?.length - 1]?.data?.name;
       this.state.isLoadingPosts = false;
     }
@@ -26,7 +25,6 @@ export default new Vuex.Store({
       this.state.isLoadingPosts = true;
       axios
         .get(`https://www.reddit.com/r/aww/.json?after=${this.state.after}&limit=${this.state.limit}`)
-        // .get('https://www.reddit.com/r/aww/.json?limit=25')
         .then(r => r.data.data.children)
         .then(posts => {
           commit('SET_POSTS', posts)

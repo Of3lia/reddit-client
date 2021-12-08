@@ -20,11 +20,12 @@
         lg="4"
         xl="3"
         class="mb-3 mt-3"
-        v-for="skeleton in 4"
+        v-for="skeleton in 6"
         :key="skeleton"
       >
         <v-skeleton-loader type="card"> </v-skeleton-loader>
       </v-col>
+      <span ref="loadMorePostsEnd"></span>
     </v-row>
   </v-container>
 </template>
@@ -60,14 +61,13 @@ export default {
       this.observer = new IntersectionObserver(this.callback, options);
     },
     callback() {
-      console.log("observeEED");
       if (!this.isLoadingPosts) {
         this.$store.dispatch("loadPosts");
       }
     },
-    observe() {
+    async observe() {
       this.observer.observe(this.$refs.loadMorePosts);
-      console.log("observing");
+      this.observer.observe(this.$refs.loadMorePostsEnd);
     },
   },
 };

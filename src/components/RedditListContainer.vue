@@ -1,7 +1,16 @@
 <template>
-  <v-container>
+  <v-container ref="scrollArea">
     <v-row>
-      <v-col class="col-4 mb-3 mt-3" v-for="post in posts" :key="post.name">
+      <v-col
+        cols="12"
+        sm="6"
+        lg="4"
+        xl="3"
+        class="mb-3 mt-3"
+        v-for="(post, i) in posts"
+        :key="post.name"
+      >
+        <span v-if="i == 25">{asdasdasdasdasd}</span>
         <RedditListItem :post="post.data" />
       </v-col>
     </v-row>
@@ -22,20 +31,25 @@ export default {
   },
   created() {
     this.$store.dispatch("loadPosts");
+  },
+  mounted() {
     this.initIntersectionObserver();
   },
   computed: mapState(["posts"]),
   methods: {
     initIntersectionObserver() {
       let options = {
-        root: document.querySelector("#scrollArea"),
+        root: this.$refs.scrollArea,
         rootMargin: "0px",
         threshold: 1.0,
       };
 
       this.observer = new IntersectionObserver(this.callback, options);
+      console.log(this.$refs.scrollArea);
     },
-    callback() {},
+    callback() {
+      console.log("asdasd");
+    },
   },
 };
 </script>

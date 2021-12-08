@@ -7,18 +7,22 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     posts: [],
+    limit: 25,
+    after: '',
   },
   mutations: {
     SET_POSTS(state, posts) {
-      state.posts = posts;
-      console.log(posts);
+      state.posts = { ...posts, ...state.posts };
+      state.after = posts[posts?.length - 1]?.data?.name;
+      // console.log(posts[posts.length - 1].data.name);
     }
   },
   actions: {
     loadPosts({ commit }) {
       axios
-        // .get('https://www.reddit.com/r/aww/.json?after=t3_raw188&limit=3')
-        .get('https://www.reddit.com/r/aww/.json?limit=25')
+        .get(`https://www.reddit.com/r/aww/.json?
+        after=${this.state.after}&limit=${this.state.limit}`)
+        // .get('https://www.reddit.com/r/aww/.json?limit=25')
         .then(r => r.data.data.children)
         .then(posts => {
           commit('SET_POSTS', posts)

@@ -10,8 +10,19 @@
         v-for="(post, i) in posts"
         :key="post.name"
       >
-        <span v-if="i == 25">{asdasdasdasdasd}</span>
-        <RedditListItem :post="post.data" />
+        <RedditListItem :post="post.data" :index="i" />
+      </v-col>
+
+      <v-col
+        cols="12"
+        sm="6"
+        lg="4"
+        xl="3"
+        class="mb-3 mt-3"
+        v-for="skeleton in 25"
+        :key="skeleton"
+      >
+        <v-skeleton-loader class="mx-auto" type="card"></v-skeleton-loader>
       </v-col>
     </v-row>
   </v-container>
@@ -45,10 +56,13 @@ export default {
       };
 
       this.observer = new IntersectionObserver(this.callback, options);
-      console.log(this.$refs.scrollArea);
     },
     callback() {
       console.log("asdasd");
+    },
+    observe() {
+      console.log("qweqweqwewqe");
+      this.observer.observe(this.$refs.target);
     },
   },
 };

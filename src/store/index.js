@@ -17,8 +17,9 @@ export default new Vuex.Store({
   actions: {
     loadPosts({ commit }) {
       axios
-        .get('https://www.reddit.com/r/aww/.json?after=t3_raw188&limit=1')
-        .then(r => r.data)
+        // .get('https://www.reddit.com/r/aww/.json?after=t3_raw188&limit=3')
+        .get('https://www.reddit.com/r/aww/.json?limit=25')
+        .then(r => r.data.data.children)
         .then(posts => {
           commit('SET_POSTS', posts)
         }).catch(e => {

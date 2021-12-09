@@ -2,6 +2,16 @@
   <v-card>
     <v-row>
       <v-col>
+        <v-card-subtitle
+          style="
+            position: absolute;
+            top: -10px;
+            right: 0;
+            color: rgb(150, 50, 150);
+          "
+        >
+          {{ post.subreddit_name_prefixed }}
+        </v-card-subtitle>
         <v-card-title>
           <a
             style="color: inherit; text-decoration: inherit"
@@ -24,7 +34,10 @@
           transition="scale-transition"
         />
         <video v-else width="100%" controls>
-          <source :src="post.secure_media.reddit_video.fallback_url" />
+          <source
+            :src="post.secure_media.reddit_video.fallback_url"
+            preload="metadata"
+          />
           Your browser does not support the video tag.
         </video>
       </v-col>

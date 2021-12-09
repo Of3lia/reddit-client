@@ -1,5 +1,9 @@
 # reddit-client
 
+https://reddit-client-aww.azurewebsites.net
+
+![image could not load](/public/img/thumbnail.png)
+
 ## Project setup
 ```
 yarn install

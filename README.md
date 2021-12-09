@@ -1,6 +1,8 @@
 # reddit-client
 
-https://reddit-client-aww.azurewebsites.net
+[Github Pages](https://of3lia.github.io/reddit-client/#/)
+
+[Azure (will be removed soon)](https://reddit-client-aww.azurewebsites.net)
 
 ![image could not load](/public/img/thumbnail.png)
 

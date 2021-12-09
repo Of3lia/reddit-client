@@ -1,18 +1,18 @@
 <template>
   <v-container>
     <v-row>
-      <v-col
-        cols="12"
-        sm="6"
-        lg="4"
-        xl="3"
-        class="mb-3 mt-3"
-        v-for="(post, i) in posts"
-        :key="post.name"
-      >
-        <RedditListItem :post="post.data" :index="i" />
-      </v-col>
-
+      <template v-for="(post, i) in posts">
+        <v-col
+          cols="12"
+          sm="6"
+          lg="4"
+          xl="3"
+          class="mb-3 mt-3"
+          :key="post.name"
+        >
+          <RedditListItem :post="post.data" :index="i" />
+        </v-col>
+      </template>
       <span ref="loadMorePosts"></span>
       <v-col
         cols="12"

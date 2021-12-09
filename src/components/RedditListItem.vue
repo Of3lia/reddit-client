@@ -16,7 +16,7 @@
     <v-row>
       <v-col>
         <v-img
-          v-if="!post.is_video"
+          v-if="!post.is_video && post.thumbnail"
           alt="Vuetify Logo"
           class="shrink mr-2"
           contain

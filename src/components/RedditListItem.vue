@@ -14,7 +14,7 @@
         </v-card-subtitle>
         <v-card-title>
           <a
-            style="color: inherit; text-decoration: inherit"
+            style="color: inherit; text-decoration: inherit; word-break: normal"
             :href="post.url_overridden_by_dest"
           >
             {{ post.title }}

@@ -4,5 +4,6 @@ module.exports = {
   ],
   publicPath: process.env.NODE_ENV === 'production'
     ? '/reddit-client/'
-    : '/'
+    : '/',
+  outputDir: "docs",
 }
